@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Player</title>
+<style>
+            body{
+            margin: 0;
+            padding: 0;
+            background-image:url(pex.jpg) ;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+  .video-wrapper {
+    display: flex;
+    padding-left: 20%;
+    justify-content:left;
+  }
+  .video-container {
+    display: none;
+    width: 20%;
+    height: 15%; /* Adjust width as needed */
+  }
+</style>
+</head>
+<body>
+
+<h2 style="color: aqua">Select a Video</h2>
+
+<form id="video-form" style="color: aqua">
+  <input type="radio" id="video1" name="video" value="video1">
+  <label for="video1">&#128515--Video 1</label><br><br>
+  <input type="radio" id="video2" name="video" value="video2">
+  <label for="video2">&#128515--Video 2</label><br><br>
+  <input type="submit" value="Play Video">
+</form>
+<br><br><br>
+<div class="video-wrapper">
+  <div id="video-container1" class="video-container">
+    <video id="video-player1" width="100%" height="auto" controls>
+      <source src="" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <div id="video-container2" class="video-container">
+    <video id="video-player2" width="100%" height="auto" controls>
+      <source src="" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</div>
+
+<script>
+  document.getElementById("video-form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent form submission
+    // Get the selected video
+    var selectedVideo = document.querySelector('input[name="video"]:checked').value;
+    // Set the source of the video players based on the selection
+    var videoPlayer1 = document.getElementById("video-player1");
+    var videoPlayer2 = document.getElementById("video-player2");
+    if (selectedVideo === "video1") {
+      videoPlayer1.src = "j.mp4";
+      videoPlayer2.src = ""; // Pause the other video
+    } else if (selectedVideo === "video2") {
+      videoPlayer1.src = ""; // Pause the other video
+      videoPlayer2.src = "m.mp4";}
+    // Show the corresponding video container
+    document.getElementById("video-container1").style.display = (selectedVideo === "video1") ? "block" : "none";
+    document.getElementById("video-container2").style.display = (selectedVideo === "video2") ? "block" : "none";
+  });
+</script>
+
+</body>
+</html>
