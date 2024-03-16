@@ -33,7 +33,10 @@
   <label for="video1">&#128515--Video 1</label><br><br>
   <input type="radio" id="video2" name="video" value="video2">
   <label for="video2">&#128515--Video 2</label><br><br>
+  <input type="radio" id="video3" name="video" value="video1">
+  <label for="video3">&#128515--Video 3</label><br><br>
   <input type="submit" value="Play Video">
+
 </form>
 <br><br><br>
 <div class="video-wrapper">
@@ -49,6 +52,12 @@
       Your browser does not support the video tag.
     </video>
   </div>
+  <div id="video-container3" class="video-container">
+    <video id="video-player3" width="100%" height="auto" controls>
+      <source src="" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
 </div>
 
 <script>
@@ -59,15 +68,23 @@
     // Set the source of the video players based on the selection
     var videoPlayer1 = document.getElementById("video-player1");
     var videoPlayer2 = document.getElementById("video-player2");
+    var videoPlayer2 = document.getElementById("video-player3");
     if (selectedVideo === "video1") {
       videoPlayer1.src = "j.mp4";
       videoPlayer2.src = ""; // Pause the other video
     } else if (selectedVideo === "video2") {
       videoPlayer1.src = ""; // Pause the other video
       videoPlayer2.src = "m.mp4";}
+      else if (selectedVideo==='video3'){
+      videoPlayer1.src = ""; // Pause the other video
+      videoPlayer2.src = "";
+      videoPlayer3.src="https://www.youtube.com/embed/sr3x_3NHA7M?si=ls51UoVzkkQE5cGy";
+      }
     // Show the corresponding video container
     document.getElementById("video-container1").style.display = (selectedVideo === "video1") ? "block" : "none";
     document.getElementById("video-container2").style.display = (selectedVideo === "video2") ? "block" : "none";
+
+    document.getElementById("video-container3").style.display = (selectedVideo === "video3") ? "block" : "none";
   });
 </script>
 
